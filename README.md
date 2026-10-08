@@ -5,17 +5,18 @@ structures. The complete project will include Stack, Queue, Deque, and Linked
 List implementations, practical algorithms, automated tests, performance
 comparisons, written analysis, and a Streamlit interface.
 
-## Current progress: Day 2 complete
+## Current progress: Day 3 complete
 
 - Project foundation and Python package structure.
 - A list-backed `Stack` with the assignment-required methods.
 - A balanced-parentheses checker that uses the custom `Stack`.
 - A list-backed `Queue` and FIFO task-processing simulation.
 - A list-backed `Deque` and palindrome checker.
-- Automated tests for all three structures and their algorithms.
+- A singly linked `LinkedList` built from `Node` objects and a task-management example.
+- Automated tests for all four structures and their algorithms.
 
-Linked List, Streamlit, benchmarks, and written analysis are scheduled for
-later days. Days 1 and 2 require only `pytest`; the implementation uses
+Streamlit, benchmarks, and written analysis are scheduled for later days.
+Days 1 through 3 require only `pytest`; the implementation uses
 the Python standard library.
 
 ## Setup
@@ -123,6 +124,41 @@ punctuation. For example, `racecar` is a palindrome, while `Racecar` and
 `racecar!` are not. Empty text and single characters are palindromes. The
 algorithm uses the custom Deque to compare characters from opposite ends.
 
+## Linked List example
+
+```python
+from datastructure_src.linked_list import LinkedList, Node, manage_tasks
+
+linked_list = LinkedList()
+linked_list.insert(10)
+linked_list.insert(20)
+linked_list.insert(30)
+
+print(linked_list.display())  # 10 -> 20 -> 30 -> None
+print(linked_list.search(20)) # True
+print(linked_list.delete(20)) # True
+print(linked_list.display())  # 10 -> 30 -> None
+
+result = manage_tasks(["Task A", "Task B", "Task C"], "Task B", "Task C")
+print(result["initial_sequence"]) # Task A -> Task B -> Task C -> None
+print(result["removed"])          # True
+print(result["found"])            # True
+print(result["updated_sequence"]) # Task A -> Task C -> None
+```
+
+Each `Node` has `data` and `next` attributes. A new node's `next` is `None`.
+`LinkedList` manages a chain of nodes through its internal head reference.
+`insert(data)` appends a node and returns `None`. `delete(data)` removes the
+first value equal to `data` and returns `True`; it returns `False` when the
+value is missing, including on an empty list. Duplicates after the first match
+remain in the list. `search(data)` returns a boolean without changing the list.
+
+`display()` returns a string ending in `None`; an empty list returns `"None"`.
+It does not print. All values, including `None`, can be stored in nodes.
+`manage_tasks()` adds the supplied tasks in order, removes one matching task,
+searches the updated list, and returns the initial and updated sequences plus
+the removal and search results. It leaves the input collection unchanged.
+
 ## Current files
 
 ```text
@@ -140,21 +176,29 @@ LinearDS-Suite/
 |   |   |-- __init__.py
 |   |   |-- queue.py
 |   |   `-- queue_algorithms.py
-|   `-- deque/
+|   |-- deque/
+|   |   |-- __init__.py
+|   |   |-- deque.py
+|   |   `-- deque_algorithms.py
+|   `-- linked_list/
 |       |-- __init__.py
-|       |-- deque.py
-|       `-- deque_algorithms.py
+|       |-- node.py
+|       |-- linked_list.py
+|       `-- linked_list_algorithms.py
 |-- tests/
 |   |-- test_stack.py
 |   |-- test_queue.py
-|   `-- test_deque.py
+|   |-- test_deque.py
+|   `-- test_linked_list.py
 `-- project doc/
     |-- LinearDS-Suite_README_Compact.md
     |-- DAY_01_PROJECT_SETUP_STACK.md
     |-- DAY_02_QUEUE_DEQUE.md
+    |-- DAY_03_LINKED_LIST.md
     `-- ... remaining daily plans
 ```
 
 The original [project brief](project%20doc/LinearDS-Suite_README_Compact.md),
-[Day 1 plan](project%20doc/DAY_01_PROJECT_SETUP_STACK.md), and
-[Day 2 plan](project%20doc/DAY_02_QUEUE_DEQUE.md) define the current scope.
+[Day 1 plan](project%20doc/DAY_01_PROJECT_SETUP_STACK.md),
+[Day 2 plan](project%20doc/DAY_02_QUEUE_DEQUE.md), and
+[Day 3 plan](project%20doc/DAY_03_LINKED_LIST.md) define the current scope.
