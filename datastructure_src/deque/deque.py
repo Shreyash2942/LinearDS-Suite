@@ -33,3 +33,7 @@ class Deque:
     def isEmpty(self) -> bool:
         """Return whether the deque contains no items."""
         return not self._items
+
+    def to_list(self) -> list[Any]:
+        """Return a shallow snapshot in front-to-rear order."""
+        return self._items.copy()

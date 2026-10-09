@@ -29,3 +29,7 @@ class Stack:
     def isEmpty(self) -> bool:
         """Return whether the stack contains no items."""
         return not self._items
+
+    def to_list(self) -> list[Any]:
+        """Return a shallow snapshot in bottom-to-top order."""
+        return self._items.copy()

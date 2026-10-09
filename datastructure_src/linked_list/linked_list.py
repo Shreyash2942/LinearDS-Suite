@@ -59,3 +59,12 @@ class LinkedList:
             current = current.next
         values.append("None")
         return " -> ".join(values)
+
+    def to_list(self) -> list[Any]:
+        """Return a shallow snapshot of node values in list order."""
+        values = []
+        current = self._head
+        while current is not None:
+            values.append(current.data)
+            current = current.next
+        return values
