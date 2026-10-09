@@ -56,6 +56,9 @@ If dependencies are installed in your active environment, use
 `python -m streamlit run streamlit_app/app.py` instead. Stop the server with
 `Ctrl+C` in its terminal.
 
+The project configuration disables Streamlit's first-run email prompt, so
+launching from the project root does not require an email address.
+
 Choose a page in the sidebar or use the links on Home. Each structure page
 lets you add values, run its required operations, view the current order,
 clear the structure, and try its algorithm example. Values entered in the
