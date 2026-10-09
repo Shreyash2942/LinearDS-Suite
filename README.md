@@ -5,7 +5,7 @@ structures. The complete project will include Stack, Queue, Deque, and Linked
 List implementations, practical algorithms, automated tests, performance
 comparisons, written analysis, and a Streamlit interface.
 
-## Current progress: Day 3 complete
+## Current progress: Day 4 complete
 
 - Project foundation and Python package structure.
 - A list-backed `Stack` with the assignment-required methods.
@@ -14,10 +14,12 @@ comparisons, written analysis, and a Streamlit interface.
 - A list-backed `Deque` and palindrome checker.
 - A singly linked `LinkedList` built from `Node` objects and a task-management example.
 - Automated tests for all four structures and their algorithms.
+- A Streamlit interface with Home, Stack, Queue, Deque, Linked List, and Algorithms pages.
+- Session state, structure visualizations, input validation, and automated UI tests.
 
-Streamlit, benchmarks, and written analysis are scheduled for later days.
-Days 1 through 3 require only `pytest`; the implementation uses
-the Python standard library.
+Benchmarks and written analysis are scheduled for later days. The data
+structures use the Python standard library; the interface uses Streamlit and
+the test suite uses `pytest` plus Streamlit's built-in app-testing tools.
 
 ## Setup
 
@@ -40,6 +42,43 @@ If dependencies are already installed in your active Python environment:
 ```text
 python -m pytest -q
 ```
+
+## Launch the interactive app
+
+From the project root, run:
+
+```powershell
+.\.venv\Scripts\python.exe -m streamlit run streamlit_app/app.py
+```
+
+Open the local URL printed in the terminal, usually `http://localhost:8501`.
+If dependencies are installed in your active environment, use
+`python -m streamlit run streamlit_app/app.py` instead. Stop the server with
+`Ctrl+C` in its terminal.
+
+Choose a page in the sidebar or use the links on Home. Each structure page
+lets you add values, run its required operations, view the current order,
+clear the structure, and try its algorithm example. Values entered in the
+structure controls are text. Blank values are rejected, and invalid operations
+on empty structures show an error message.
+
+Your objects remain available across interactions and page switches within
+the same session. Refreshing the browser or starting a new session creates
+fresh structures. Each user session has its own objects. Algorithm examples
+use separate objects and do not change your interactive structures.
+
+The Algorithms page collects all four examples. Task examples accept one
+label per line, trim surrounding spaces, and ignore blank lines. The
+palindrome checker compares exact characters, including case and punctuation.
+
+The UI calls the existing classes and algorithms. Each class also provides
+`to_list()`, which returns a shallow copy of its values for visualization:
+bottom-to-top for Stack, front-to-rear for Queue and Deque, and node order for
+Linked List. Changing the returned list does not change the structure.
+
+The test command runs both data structure tests and UI tests. UI tests
+exercise widgets through Streamlit's `AppTest`, including navigation, object
+state, ordering, algorithm results, and errors.
 
 ## Stack example
 
@@ -166,6 +205,8 @@ LinearDS-Suite/
 |-- README.md
 |-- requirements.txt
 |-- .gitignore
+|-- .streamlit/
+|   `-- config.toml
 |-- datastructure_src/
 |   |-- __init__.py
 |   |-- stack/
@@ -189,16 +230,31 @@ LinearDS-Suite/
 |   |-- test_stack.py
 |   |-- test_queue.py
 |   |-- test_deque.py
-|   `-- test_linked_list.py
+|   |-- test_linked_list.py
+|   |-- test_snapshots.py
+|   `-- test_streamlit_app.py
+|-- streamlit_app/
+|   |-- __init__.py
+|   |-- app.py
+|   |-- common.py
+|   |-- algorithm_panels.py
+|   `-- pages/
+|       |-- stack_page.py
+|       |-- queue_page.py
+|       |-- deque_page.py
+|       |-- linked_list_page.py
+|       `-- algorithms_page.py
 `-- project doc/
     |-- LinearDS-Suite_README_Compact.md
     |-- DAY_01_PROJECT_SETUP_STACK.md
     |-- DAY_02_QUEUE_DEQUE.md
     |-- DAY_03_LINKED_LIST.md
+    |-- DAY_04_STREAMLIT_UI.md
     `-- ... remaining daily plans
 ```
 
 The original [project brief](project%20doc/LinearDS-Suite_README_Compact.md),
 [Day 1 plan](project%20doc/DAY_01_PROJECT_SETUP_STACK.md),
-[Day 2 plan](project%20doc/DAY_02_QUEUE_DEQUE.md), and
-[Day 3 plan](project%20doc/DAY_03_LINKED_LIST.md) define the current scope.
+[Day 2 plan](project%20doc/DAY_02_QUEUE_DEQUE.md),
+[Day 3 plan](project%20doc/DAY_03_LINKED_LIST.md), and
+[Day 4 plan](project%20doc/DAY_04_STREAMLIT_UI.md) define the current scope.
