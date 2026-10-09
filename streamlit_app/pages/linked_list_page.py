@@ -4,6 +4,7 @@ import streamlit as st
 
 from datastructure_src.linked_list import LinkedList
 from streamlit_app.common import add_value
+from streamlit_app.algorithm_panels import management_panel
 
 st.title("Linked List")
 st.caption("An ordered chain of nodes")
@@ -46,3 +47,7 @@ with view:
     st.code(current.display(), language=None)
     if not current.to_list():
         st.info("The linked list is empty. Insert a value to get started.")
+
+st.divider()
+with st.expander("Try dynamic task management"):
+    management_panel("linked_list_demo")

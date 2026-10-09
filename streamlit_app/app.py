@@ -36,6 +36,7 @@ def home() -> None:
                 st.page_link(f"pages/{filename}", label=f"Open {name}")
 
     st.caption("Your structures stay available as you switch pages within this session.")
+    st.page_link("pages/algorithms_page.py", label="Try the algorithm examples", icon="🧩")
 
 
 st.set_page_config(page_title="LinearDS-Suite", page_icon="📚", layout="wide")
@@ -48,5 +49,6 @@ page = st.navigation([
     st.Page("pages/queue_page.py", title="Queue", icon="🚶"),
     st.Page("pages/deque_page.py", title="Deque", icon="↔️"),
     st.Page("pages/linked_list_page.py", title="Linked List", icon="🔗"),
+    st.Page("pages/algorithms_page.py", title="Algorithms", icon="🧩"),
 ])
 page.run()

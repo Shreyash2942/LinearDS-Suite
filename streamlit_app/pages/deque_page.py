@@ -4,6 +4,7 @@ import streamlit as st
 
 from datastructure_src.deque import Deque
 from streamlit_app.common import add_value, run_operation, show_sequence
+from streamlit_app.algorithm_panels import palindrome_panel
 
 st.title("Deque")
 st.caption("Double-ended queue")
@@ -34,3 +35,7 @@ with controls:
 
 with view:
     show_sequence(st.session_state.deque.to_list(), "Deque")
+
+st.divider()
+with st.expander("Try the palindrome checker"):
+    palindrome_panel("deque_demo")

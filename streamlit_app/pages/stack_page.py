@@ -4,6 +4,7 @@ import streamlit as st
 
 from datastructure_src.stack import Stack
 from streamlit_app.common import add_value, run_operation, show_sequence
+from streamlit_app.algorithm_panels import bracket_panel
 
 st.title("Stack")
 st.caption("LIFO · Last in, first out")
@@ -31,3 +32,7 @@ with controls:
 
 with view:
     show_sequence(st.session_state.stack.to_list(), "Stack")
+
+st.divider()
+with st.expander("Try balanced parentheses"):
+    bracket_panel("stack_demo")

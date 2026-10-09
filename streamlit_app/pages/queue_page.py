@@ -4,6 +4,7 @@ import streamlit as st
 
 from datastructure_src.queue import Queue
 from streamlit_app.common import add_value, run_operation, show_sequence
+from streamlit_app.algorithm_panels import processing_panel
 
 st.title("Queue")
 st.caption("FIFO · First in, first out")
@@ -31,3 +32,7 @@ with controls:
 
 with view:
     show_sequence(st.session_state.queue.to_list(), "Queue")
+
+st.divider()
+with st.expander("Try FIFO task processing"):
+    processing_panel("queue_demo")
