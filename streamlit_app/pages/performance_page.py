@@ -4,7 +4,9 @@ import streamlit as st
 
 from performance.benchmark import load_results
 from performance.comparison import COMPLEXITY_ROWS
+from streamlit_app.common import ensure_app_context
 
+ensure_app_context("pages/performance_page.py")
 st.title("Performance")
 st.write("Compare theoretical operation costs with measured runtime as input size grows.")
 st.subheader("Theoretical complexity")

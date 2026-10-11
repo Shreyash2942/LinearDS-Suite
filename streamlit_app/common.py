@@ -11,6 +11,13 @@ from datastructure_src.queue import Queue
 from datastructure_src.stack import Stack
 
 
+def ensure_app_context(page_path: str) -> None:
+    """Route a first visit through the entrypoint before rendering a page."""
+    if not st.session_state.get("_app_initialized", False):
+        st.session_state["_requested_page"] = page_path
+        st.switch_page("app.py")
+
+
 def initialize_structures() -> None:
     """Create each structure once per user session."""
     for key, factory in (

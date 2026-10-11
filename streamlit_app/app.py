@@ -43,6 +43,7 @@ def home() -> None:
 
 st.set_page_config(page_title="LinearDS-Suite", page_icon="📚", layout="wide")
 initialize_structures()
+st.session_state["_app_initialized"] = True
 st.sidebar.title("LinearDS-Suite")
 st.sidebar.caption("Explore the order of data.")
 page = st.navigation([
@@ -55,4 +56,7 @@ page = st.navigation([
     st.Page("pages/performance_page.py", title="Performance", icon="📈"),
     st.Page("pages/comparison_page.py", title="Comparison", icon="⚖️"),
 ])
+requested_page = st.session_state.pop("_requested_page", None)
+if requested_page:
+    st.switch_page(requested_page)
 page.run()

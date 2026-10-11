@@ -3,9 +3,10 @@
 import streamlit as st
 
 from datastructure_src.linked_list import LinkedList
-from streamlit_app.common import add_value
+from streamlit_app.common import add_value, ensure_app_context
 from streamlit_app.algorithm_panels import management_panel
 
+ensure_app_context("pages/linked_list_page.py")
 st.title("Linked List")
 st.caption("An ordered chain of nodes")
 st.write("Append values at the end, search the chain, or delete the first matching value.")
@@ -42,10 +43,11 @@ with controls:
 
 with view:
     current = st.session_state.linked_list
+    items = current.to_list()
     st.subheader("Current structure")
-    st.metric("Items", len(current.to_list()))
+    st.metric("Items", len(items))
     st.code(current.display(), language=None)
-    if not current.to_list():
+    if not items:
         st.info("The linked list is empty. Insert a value to get started.")
 
 st.divider()

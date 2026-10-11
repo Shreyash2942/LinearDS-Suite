@@ -3,9 +3,10 @@
 import streamlit as st
 
 from datastructure_src.queue import Queue
-from streamlit_app.common import add_value, run_operation, show_sequence
+from streamlit_app.common import add_value, ensure_app_context, run_operation, show_sequence
 from streamlit_app.algorithm_panels import processing_panel
 
+ensure_app_context("pages/queue_page.py")
 st.title("Queue")
 st.caption("FIFO · First in, first out")
 st.write("Add values at the rear. Values leave from the front in arrival order.")

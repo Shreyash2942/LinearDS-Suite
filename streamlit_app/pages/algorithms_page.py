@@ -1,6 +1,7 @@
 """Run the four practical data structure examples."""
 
 import streamlit as st
+from streamlit_app.common import ensure_app_context
 
 from streamlit_app.algorithm_panels import (
     bracket_panel,
@@ -9,6 +10,7 @@ from streamlit_app.algorithm_panels import (
     processing_panel,
 )
 
+ensure_app_context("pages/algorithms_page.py")
 st.title("Algorithms")
 st.write("See how each structure solves a practical problem.")
 st.caption("Examples use their own values so your current structures stay intact.")

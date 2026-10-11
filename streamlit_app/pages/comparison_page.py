@@ -5,7 +5,9 @@ from pathlib import Path
 import streamlit as st
 
 from performance.comparison import STRUCTURE_ROWS
+from streamlit_app.common import ensure_app_context
 
+ensure_app_context("pages/comparison_page.py")
 st.title("Structure Comparison")
 st.write("Choose a structure based on the access order and operations your problem needs.")
 st.dataframe([{key: row[key] for key in ("Structure", "Ordering", "Big-O")} for row in STRUCTURE_ROWS], hide_index=True, width="stretch")

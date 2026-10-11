@@ -3,9 +3,10 @@
 import streamlit as st
 
 from datastructure_src.stack import Stack
-from streamlit_app.common import add_value, run_operation, show_sequence
+from streamlit_app.common import add_value, ensure_app_context, run_operation, show_sequence
 from streamlit_app.algorithm_panels import bracket_panel
 
+ensure_app_context("pages/stack_page.py")
 st.title("Stack")
 st.caption("LIFO · Last in, first out")
 st.write("Push values onto the top. The most recently added value is removed first.")

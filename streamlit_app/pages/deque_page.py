@@ -3,9 +3,10 @@
 import streamlit as st
 
 from datastructure_src.deque import Deque
-from streamlit_app.common import add_value, run_operation, show_sequence
+from streamlit_app.common import add_value, ensure_app_context, run_operation, show_sequence
 from streamlit_app.algorithm_panels import palindrome_panel
 
+ensure_app_context("pages/deque_page.py")
 st.title("Deque")
 st.caption("Double-ended queue")
 st.write("Add or remove values at either end. Choose the end for each operation.")

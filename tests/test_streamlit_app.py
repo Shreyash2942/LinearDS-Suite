@@ -47,6 +47,31 @@ def test_each_page_loads(app, name):
     open_page(app, name)
 
 
+@pytest.mark.parametrize(
+    ("name", "title"),
+    [("stack", "Stack"), ("queue", "Queue"), ("deque", "Deque"),
+     ("linked_list", "Linked List"), ("algorithms", "Algorithms"),
+     ("performance", "Performance"), ("comparison", "Structure Comparison")],
+)
+def test_first_visit_to_child_page_initializes_app_and_keeps_destination(monkeypatch, name, title):
+    from streamlit.runtime.pages_manager import PagesManager
+
+    # Reproduce a fresh server before st.navigation disables directory discovery.
+    monkeypatch.setattr(PagesManager, "uses_pages_directory", None)
+    first_visit = AppTest.from_file(str(APP_PATH), default_timeout=15)
+    first_visit.switch_page(f"pages/{name}_page.py").run()
+
+    assert not first_visit.exception
+    assert any(item.value == title for item in first_visit.title)
+    assert first_visit.session_state["_app_initialized"] is True
+    assert "_requested_page" not in first_visit.session_state
+    assert isinstance(first_visit.session_state.stack, Stack)
+    assert isinstance(first_visit.session_state.queue, Queue)
+    assert isinstance(first_visit.session_state.deque, Deque)
+    assert isinstance(first_visit.session_state.linked_list, LinkedList)
+    assert any(item.value == "LinearDS-Suite" for item in first_visit.sidebar.title)
+
+
 def test_stack_controls_follow_lifo_and_peek_preserves_values(app):
     open_page(app, "stack")
     enter_value(app, "stack_value", "first", "stack_push")
