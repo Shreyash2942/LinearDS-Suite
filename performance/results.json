@@ -1,0 +1,634 @@
+{
+  "schema_version": 1,
+  "metadata": {
+    "created_at_utc": "2026-10-10T23:23:02.635836+00:00",
+    "python": "3.14.4",
+    "implementation": "CPython",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "sizes": [
+      100,
+      1000,
+      10000
+    ],
+    "repeats": 5,
+    "search_probes": 100,
+    "statistic": "minimum of repeated full trials",
+    "timer": "timeit default_timer (perf_counter)",
+    "setup_timed": false,
+    "warmup_trials": 1,
+    "garbage_collection": "disabled by timeit during each trial",
+    "implementation_sha256": {
+      "datastructure_src/__init__.py": "7207c4d09cd1a2f8a7a5e20761777859d5536761bcd7710f9a39a33ec590025d",
+      "datastructure_src/deque/__init__.py": "2bf53713cbff52040c2526e0ccc472698efa79db0ea153f5d3809a81f81537a0",
+      "datastructure_src/deque/deque.py": "9ed66bfb1093deeafb80300d05a34f6de2f82bf0a61506ec83bfca88c244edbb",
+      "datastructure_src/deque/deque_algorithms.py": "8be8e64e6b551beb390a52c40556dc65aa46f54aad60e9685e1fa7bcf7a359f0",
+      "datastructure_src/linked_list/__init__.py": "96c9bab082a0f99ee19ca65c8235d73aa2de3defcf7dd8df846c8106680ffce8",
+      "datastructure_src/linked_list/linked_list.py": "b26f05deab3c502caf7c9f5d77635312d1d845937de9647b13010f37297bcddf",
+      "datastructure_src/linked_list/linked_list_algorithms.py": "9dc864c51bead96b0b87a636862a80c9082f66f8e89abb68ee79a5dc74c2f150",
+      "datastructure_src/linked_list/node.py": "899e58881bb5c0eeae52d4f2002e9296204a12ffaaff5cd66530c4ebaa1fbc6c",
+      "datastructure_src/queue/__init__.py": "9f4b251ef5a214ba7ad79be4a89569265fc6fe9232d32b920e93391aa2735dad",
+      "datastructure_src/queue/queue.py": "881a3a4c3ea2b04e2cf0463db550223c4e0d907f493ce23a228ae2927a361c73",
+      "datastructure_src/queue/queue_algorithms.py": "24d2a594f8e2ef550d0e1dcaaa39ed8d12f6deaf909fb1db6b8eac775628d86d",
+      "datastructure_src/stack/__init__.py": "260de6a1995649293204ecc0b9b6dd6b90e11af474345e9b059ac6b7499c478b",
+      "datastructure_src/stack/stack.py": "8ed858d1256cae4f5bdf8d4a37a194a20b84ec70ffaf4f0085756b589e47be5b",
+      "datastructure_src/stack/stack_algorithms.py": "aa0be06133d314b57cba2725ab0fa404b41b7847a16ed4fec6c6c9fc262b751f",
+      "performance/benchmark.py": "f837e1c70befda69956dc1ba5870c52a4ba28a225d29531b5b400c42944d96c0"
+    }
+  },
+  "results": [
+    {
+      "structure": "Stack",
+      "operation": "push",
+      "scenario": "add",
+      "n": 100,
+      "operations_per_trial": 100,
+      "operation_complexity": "O(1) amortized",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        4.599976819008589e-06,
+        3.7999707274138927e-06,
+        3.400025889277458e-06,
+        3.4999684430658817e-06,
+        3.400025889277458e-06
+      ],
+      "best_seconds": 3.400025889277458e-06,
+      "microseconds_per_operation": 0.03400025889277458
+    },
+    {
+      "structure": "Stack",
+      "operation": "pop",
+      "scenario": "drain",
+      "n": 100,
+      "operations_per_trial": 100,
+      "operation_complexity": "O(1) amortized",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        6.399990525096655e-06,
+        6.199989002197981e-06,
+        6.89999433234334e-06,
+        6.099988240748644e-06,
+        5.999987479299307e-06
+      ],
+      "best_seconds": 5.999987479299307e-06,
+      "microseconds_per_operation": 0.05999987479299307
+    },
+    {
+      "structure": "Queue",
+      "operation": "enqueue",
+      "scenario": "add",
+      "n": 100,
+      "operations_per_trial": 100,
+      "operation_complexity": "O(1) amortized",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        3.89997148886323e-06,
+        3.500026650726795e-06,
+        3.600027412176132e-06,
+        3.4999684430658817e-06,
+        3.400025889277458e-06
+      ],
+      "best_seconds": 3.400025889277458e-06,
+      "microseconds_per_operation": 0.03400025889277458
+    },
+    {
+      "structure": "Queue",
+      "operation": "dequeue",
+      "scenario": "drain",
+      "n": 100,
+      "operations_per_trial": 100,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(n^2)",
+      "samples_seconds": [
+        7.499998901039362e-06,
+        7.299997378140688e-06,
+        6.999995093792677e-06,
+        6.799993570894003e-06,
+        6.999995093792677e-06
+      ],
+      "best_seconds": 6.799993570894003e-06,
+      "microseconds_per_operation": 0.06799993570894003
+    },
+    {
+      "structure": "Deque",
+      "operation": "addFront",
+      "scenario": "add",
+      "n": 100,
+      "operations_per_trial": 100,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(n^2)",
+      "samples_seconds": [
+        6.499991286545992e-06,
+        6.099988240748644e-06,
+        5.89998671784997e-06,
+        5.799985956400633e-06,
+        5.700043402612209e-06
+      ],
+      "best_seconds": 5.700043402612209e-06,
+      "microseconds_per_operation": 0.05700043402612209
+    },
+    {
+      "structure": "Deque",
+      "operation": "addRear",
+      "scenario": "add",
+      "n": 100,
+      "operations_per_trial": 100,
+      "operation_complexity": "O(1) amortized",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        3.6999699659645557e-06,
+        3.400025889277458e-06,
+        3.3999676816165447e-06,
+        3.400025889277458e-06,
+        3.3999676816165447e-06
+      ],
+      "best_seconds": 3.3999676816165447e-06,
+      "microseconds_per_operation": 0.03399967681616545
+    },
+    {
+      "structure": "Deque",
+      "operation": "removeFront",
+      "scenario": "drain",
+      "n": 100,
+      "operations_per_trial": 100,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(n^2)",
+      "samples_seconds": [
+        7.399998139590025e-06,
+        6.999995093792677e-06,
+        7.099995855242014e-06,
+        6.999995093792677e-06,
+        6.89999433234334e-06
+      ],
+      "best_seconds": 6.89999433234334e-06,
+      "microseconds_per_operation": 0.0689999433234334
+    },
+    {
+      "structure": "Deque",
+      "operation": "removeRear",
+      "scenario": "drain",
+      "n": 100,
+      "operations_per_trial": 100,
+      "operation_complexity": "O(1) amortized",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        5.699985194951296e-06,
+        5.699985194951296e-06,
+        5.499983672052622e-06,
+        5.500041879713535e-06,
+        5.799985956400633e-06
+      ],
+      "best_seconds": 5.499983672052622e-06,
+      "microseconds_per_operation": 0.05499983672052622
+    },
+    {
+      "structure": "LinkedList",
+      "operation": "insert",
+      "scenario": "add",
+      "n": 100,
+      "operations_per_trial": 100,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(n^2)",
+      "samples_seconds": [
+        6.029999349266291e-05,
+        5.960004637017846e-05,
+        5.9399986639618874e-05,
+        5.9399986639618874e-05,
+        6.589997792616487e-05
+      ],
+      "best_seconds": 5.9399986639618874e-05,
+      "microseconds_per_operation": 0.5939998663961887
+    },
+    {
+      "structure": "LinkedList",
+      "operation": "search",
+      "scenario": "search_last",
+      "n": 100,
+      "operations_per_trial": 100,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(p*n)",
+      "samples_seconds": [
+        0.0001604999997653067,
+        0.0001601999974809587,
+        0.0001601999974809587,
+        0.0001601999974809587,
+        0.00016009999671950936
+      ],
+      "best_seconds": 0.00016009999671950936,
+      "microseconds_per_operation": 1.6009999671950936
+    },
+    {
+      "structure": "LinkedList",
+      "operation": "delete",
+      "scenario": "delete_last",
+      "n": 100,
+      "operations_per_trial": 1,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        2.500019036233425e-06,
+        2.300017513334751e-06,
+        2.100015990436077e-06,
+        2.100015990436077e-06,
+        2.100015990436077e-06
+      ],
+      "best_seconds": 2.100015990436077e-06,
+      "microseconds_per_operation": 2.100015990436077
+    },
+    {
+      "structure": "Stack",
+      "operation": "push",
+      "scenario": "add",
+      "n": 1000,
+      "operations_per_trial": 1000,
+      "operation_complexity": "O(1) amortized",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        3.4599972423166037e-05,
+        3.3699965570122004e-05,
+        3.649998689070344e-05,
+        3.3699965570122004e-05,
+        3.250001464039087e-05
+      ],
+      "best_seconds": 3.250001464039087e-05,
+      "microseconds_per_operation": 0.03250001464039087
+    },
+    {
+      "structure": "Stack",
+      "operation": "pop",
+      "scenario": "drain",
+      "n": 1000,
+      "operations_per_trial": 1000,
+      "operation_complexity": "O(1) amortized",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        5.5100012104958296e-05,
+        5.549995694309473e-05,
+        5.460000829771161e-05,
+        5.4800009820610285e-05,
+        5.440000677481294e-05
+      ],
+      "best_seconds": 5.440000677481294e-05,
+      "microseconds_per_operation": 0.05440000677481294
+    },
+    {
+      "structure": "Queue",
+      "operation": "enqueue",
+      "scenario": "add",
+      "n": 1000,
+      "operations_per_trial": 1000,
+      "operation_complexity": "O(1) amortized",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        3.2400013878941536e-05,
+        3.219995414838195e-05,
+        3.2100011594593525e-05,
+        3.220001235604286e-05,
+        3.219995414838195e-05
+      ],
+      "best_seconds": 3.2100011594593525e-05,
+      "microseconds_per_operation": 0.032100011594593525
+    },
+    {
+      "structure": "Queue",
+      "operation": "dequeue",
+      "scenario": "drain",
+      "n": 1000,
+      "operations_per_trial": 1000,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(n^2)",
+      "samples_seconds": [
+        8.590001380071044e-05,
+        8.620001608505845e-05,
+        8.58000130392611e-05,
+        8.599995635449886e-05,
+        8.66000191308558e-05
+      ],
+      "best_seconds": 8.58000130392611e-05,
+      "microseconds_per_operation": 0.0858000130392611
+    },
+    {
+      "structure": "Deque",
+      "operation": "addFront",
+      "scenario": "add",
+      "n": 1000,
+      "operations_per_trial": 1000,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(n^2)",
+      "samples_seconds": [
+        0.00016830000095069408,
+        0.00015849998453631997,
+        0.00015840004198253155,
+        0.00015810003969818354,
+        0.00015819998225197196
+      ],
+      "best_seconds": 0.00015810003969818354,
+      "microseconds_per_operation": 0.15810003969818354
+    },
+    {
+      "structure": "Deque",
+      "operation": "addRear",
+      "scenario": "add",
+      "n": 1000,
+      "operations_per_trial": 1000,
+      "operation_complexity": "O(1) amortized",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        3.709999145939946e-05,
+        5.2099989261478186e-05,
+        5.2499992307275534e-05,
+        5.2600051276385784e-05,
+        5.23999915458262e-05
+      ],
+      "best_seconds": 3.709999145939946e-05,
+      "microseconds_per_operation": 0.03709999145939946
+    },
+    {
+      "structure": "Deque",
+      "operation": "removeFront",
+      "scenario": "drain",
+      "n": 1000,
+      "operations_per_trial": 1000,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(n^2)",
+      "samples_seconds": [
+        9.529996896162629e-05,
+        8.570001227781177e-05,
+        8.600001456215978e-05,
+        8.560001151636243e-05,
+        9.640003554522991e-05
+      ],
+      "best_seconds": 8.560001151636243e-05,
+      "microseconds_per_operation": 0.08560001151636243
+    },
+    {
+      "structure": "Deque",
+      "operation": "removeRear",
+      "scenario": "drain",
+      "n": 1000,
+      "operations_per_trial": 1000,
+      "operation_complexity": "O(1) amortized",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        5.460000829771161e-05,
+        5.449994932860136e-05,
+        5.440000677481294e-05,
+        5.4500007536262274e-05,
+        5.43000060133636e-05
+      ],
+      "best_seconds": 5.43000060133636e-05,
+      "microseconds_per_operation": 0.0543000060133636
+    },
+    {
+      "structure": "LinkedList",
+      "operation": "insert",
+      "scenario": "add",
+      "n": 1000,
+      "operations_per_trial": 1000,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(n^2)",
+      "samples_seconds": [
+        0.005174799996893853,
+        0.005217799975071102,
+        0.0043264999985694885,
+        0.004380800004582852,
+        0.004439899988938123
+      ],
+      "best_seconds": 0.0043264999985694885,
+      "microseconds_per_operation": 4.3264999985694885
+    },
+    {
+      "structure": "LinkedList",
+      "operation": "search",
+      "scenario": "search_last",
+      "n": 1000,
+      "operations_per_trial": 100,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(p*n)",
+      "samples_seconds": [
+        0.0013844000059179962,
+        0.0014185999752953649,
+        0.0013888999819755554,
+        0.0014139999984763563,
+        0.0014184999745339155
+      ],
+      "best_seconds": 0.0013844000059179962,
+      "microseconds_per_operation": 13.844000059179962
+    },
+    {
+      "structure": "LinkedList",
+      "operation": "delete",
+      "scenario": "delete_last",
+      "n": 1000,
+      "operations_per_trial": 1,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        1.8400023691356182e-05,
+        1.7300015315413475e-05,
+        1.7000013031065464e-05,
+        1.7200014553964138e-05,
+        1.7199956346303225e-05
+      ],
+      "best_seconds": 1.7000013031065464e-05,
+      "microseconds_per_operation": 17.000013031065464
+    },
+    {
+      "structure": "Stack",
+      "operation": "push",
+      "scenario": "add",
+      "n": 10000,
+      "operations_per_trial": 10000,
+      "operation_complexity": "O(1) amortized",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        0.0003000999568030238,
+        0.00029579998226836324,
+        0.0002935000229626894,
+        0.0002938000252470374,
+        0.00031949998810887337
+      ],
+      "best_seconds": 0.0002935000229626894,
+      "microseconds_per_operation": 0.02935000229626894
+    },
+    {
+      "structure": "Stack",
+      "operation": "pop",
+      "scenario": "drain",
+      "n": 10000,
+      "operations_per_trial": 10000,
+      "operation_complexity": "O(1) amortized",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        0.0005317999748513103,
+        0.0005271999980323017,
+        0.000526999996509403,
+        0.0005261999904178083,
+        0.0005268999957479537
+      ],
+      "best_seconds": 0.0005261999904178083,
+      "microseconds_per_operation": 0.05261999904178083
+    },
+    {
+      "structure": "Queue",
+      "operation": "enqueue",
+      "scenario": "add",
+      "n": 10000,
+      "operations_per_trial": 10000,
+      "operation_complexity": "O(1) amortized",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        0.000291600008495152,
+        0.0002883000415749848,
+        0.00028790003852918744,
+        0.0002875000354833901,
+        0.00028710003243759274
+      ],
+      "best_seconds": 0.00028710003243759274,
+      "microseconds_per_operation": 0.028710003243759274
+    },
+    {
+      "structure": "Queue",
+      "operation": "dequeue",
+      "scenario": "drain",
+      "n": 10000,
+      "operations_per_trial": 10000,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(n^2)",
+      "samples_seconds": [
+        0.0030866999877616763,
+        0.0031196000054478645,
+        0.0030648999963887036,
+        0.0030586000066250563,
+        0.0030595999560318887
+      ],
+      "best_seconds": 0.0030586000066250563,
+      "microseconds_per_operation": 0.3058600006625056
+    },
+    {
+      "structure": "Deque",
+      "operation": "addFront",
+      "scenario": "add",
+      "n": 10000,
+      "operations_per_trial": 10000,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(n^2)",
+      "samples_seconds": [
+        0.01043769996613264,
+        0.010430300026200712,
+        0.010429599962662905,
+        0.010406300018075854,
+        0.010395699995569885
+      ],
+      "best_seconds": 0.010395699995569885,
+      "microseconds_per_operation": 1.0395699995569885
+    },
+    {
+      "structure": "Deque",
+      "operation": "addRear",
+      "scenario": "add",
+      "n": 10000,
+      "operations_per_trial": 10000,
+      "operation_complexity": "O(1) amortized",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        0.00028490001568570733,
+        0.0002967999898828566,
+        0.0003009000211022794,
+        0.0002820999943651259,
+        0.00028169999131932855
+      ],
+      "best_seconds": 0.00028169999131932855,
+      "microseconds_per_operation": 0.028169999131932855
+    },
+    {
+      "structure": "Deque",
+      "operation": "removeFront",
+      "scenario": "drain",
+      "n": 10000,
+      "operations_per_trial": 10000,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(n^2)",
+      "samples_seconds": [
+        0.0030780999804846942,
+        0.003070299979299307,
+        0.0030764000257477164,
+        0.0031302000279538333,
+        0.0030740000074729323
+      ],
+      "best_seconds": 0.003070299979299307,
+      "microseconds_per_operation": 0.3070299979299307
+    },
+    {
+      "structure": "Deque",
+      "operation": "removeRear",
+      "scenario": "drain",
+      "n": 10000,
+      "operations_per_trial": 10000,
+      "operation_complexity": "O(1) amortized",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        0.000519900000654161,
+        0.0005238000303506851,
+        0.0005248000379651785,
+        0.0005246000364422798,
+        0.0005259999888949096
+      ],
+      "best_seconds": 0.000519900000654161,
+      "microseconds_per_operation": 0.0519900000654161
+    },
+    {
+      "structure": "LinkedList",
+      "operation": "insert",
+      "scenario": "add",
+      "n": 10000,
+      "operations_per_trial": 10000,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(n^2)",
+      "samples_seconds": [
+        0.40303709998261184,
+        0.4103728999616578,
+        0.4070421000360511,
+        0.40425050002522767,
+        0.41858729999512434
+      ],
+      "best_seconds": 0.40303709998261184,
+      "microseconds_per_operation": 40.30370999826118
+    },
+    {
+      "structure": "LinkedList",
+      "operation": "search",
+      "scenario": "search_last",
+      "n": 10000,
+      "operations_per_trial": 100,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(p*n)",
+      "samples_seconds": [
+        0.029351499979384243,
+        0.03316280001308769,
+        0.03470680001191795,
+        0.02549830003408715,
+        0.02737859997432679
+      ],
+      "best_seconds": 0.02549830003408715,
+      "microseconds_per_operation": 254.9830003408715
+    },
+    {
+      "structure": "LinkedList",
+      "operation": "delete",
+      "scenario": "delete_last",
+      "n": 10000,
+      "operations_per_trial": 1,
+      "operation_complexity": "O(n) worst case",
+      "trial_complexity": "O(n)",
+      "samples_seconds": [
+        0.00027140002930536866,
+        0.00027709995629265904,
+        0.00028660002863034606,
+        0.00027650000993162394,
+        0.00026509998133406043
+      ],
+      "best_seconds": 0.00026509998133406043,
+      "microseconds_per_operation": 265.09998133406043
+    }
+  ]
+}
