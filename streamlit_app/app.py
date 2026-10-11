@@ -37,6 +37,8 @@ def home() -> None:
 
     st.caption("Your structures stay available as you switch pages within this session.")
     st.page_link("pages/algorithms_page.py", label="Try the algorithm examples", icon="🧩")
+    st.page_link("pages/performance_page.py", label="Compare operation performance", icon="📈")
+    st.page_link("pages/comparison_page.py", label="Choose a structure", icon="⚖️")
 
 
 st.set_page_config(page_title="LinearDS-Suite", page_icon="📚", layout="wide")
@@ -50,5 +52,7 @@ page = st.navigation([
     st.Page("pages/deque_page.py", title="Deque", icon="↔️"),
     st.Page("pages/linked_list_page.py", title="Linked List", icon="🔗"),
     st.Page("pages/algorithms_page.py", title="Algorithms", icon="🧩"),
+    st.Page("pages/performance_page.py", title="Performance", icon="📈"),
+    st.Page("pages/comparison_page.py", title="Comparison", icon="⚖️"),
 ])
 page.run()

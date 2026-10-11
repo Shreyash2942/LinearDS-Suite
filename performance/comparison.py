@@ -1,0 +1,42 @@
+"""Big-O and selection guidance for the actual project implementations."""
+
+COMPLEXITY_ROWS = [
+    {"Structure": "Stack", "Operation": "push", "Time": "O(1) amortized", "Notes": "A resize can cost O(n)."},
+    {"Structure": "Stack", "Operation": "pop", "Time": "O(1) amortized", "Notes": "A list shrink can cost O(n)."},
+    {"Structure": "Stack", "Operation": "peek / isEmpty", "Time": "O(1)", "Notes": "Read the last item or list length."},
+    {"Structure": "Queue", "Operation": "enqueue", "Time": "O(1) amortized", "Notes": "Append at the rear; resize can cost O(n)."},
+    {"Structure": "Queue", "Operation": "dequeue", "Time": "O(n) worst case", "Notes": "pop(0) shifts the remaining references."},
+    {"Structure": "Queue", "Operation": "front / isEmpty", "Time": "O(1)", "Notes": "Read index zero or list length."},
+    {"Structure": "Deque", "Operation": "addFront / removeFront", "Time": "O(n) worst case", "Notes": "Front insertion/removal shifts references."},
+    {"Structure": "Deque", "Operation": "addRear / removeRear", "Time": "O(1) amortized", "Notes": "End operations; resizing can cost O(n)."},
+    {"Structure": "Deque", "Operation": "isEmpty", "Time": "O(1)", "Notes": "Check list length."},
+    {"Structure": "LinkedList", "Operation": "insert", "Time": "O(n) worst case", "Notes": "Walk to the end; empty-list insertion is O(1). No tail reference."},
+    {"Structure": "LinkedList", "Operation": "search / delete", "Time": "O(n) worst case", "Notes": "Locate the first match; a head match is O(1)."},
+    {"Structure": "LinkedList", "Operation": "display", "Time": "O(n + L)", "Notes": "Visit n nodes and format L output characters (assuming simple values)."},
+    {"Structure": "All four", "Operation": "to_list", "Time": "O(n)", "Notes": "Copy or traverse n references into a shallow snapshot."},
+]
+
+STRUCTURE_ROWS = [
+    {"Structure": "Stack", "Ordering": "LIFO", "Operations": "push, pop, peek, isEmpty",
+     "Strengths": "Efficient access to the newest value; simple storage.",
+     "Weaknesses": "Only the top is exposed; no arbitrary search/removal API.",
+     "Use cases": "Bracket matching, undo history, depth-first traversal.",
+     "Big-O": "Push/pop O(1) amortized; peek/isEmpty O(1)."},
+    {"Structure": "Queue", "Ordering": "FIFO", "Operations": "enqueue, dequeue, front, isEmpty",
+     "Strengths": "Preserves arrival order; efficient rear insertion.",
+     "Weaknesses": "This list-backed implementation shifts items on dequeue.",
+     "Use cases": "Service lines, task scheduling, breadth-first traversal.",
+     "Big-O": "Enqueue O(1) amortized; dequeue O(n); front/isEmpty O(1)."},
+    {"Structure": "Deque", "Ordering": "Access at both ends",
+     "Operations": "addFront, addRear, removeFront, removeRear, isEmpty",
+     "Strengths": "Flexible choice of insertion and removal end.",
+     "Weaknesses": "This list-backed implementation shifts items at the front.",
+     "Use cases": "Palindrome checking and workflows requiring both ends.",
+     "Big-O": "Rear operations O(1) amortized; front operations O(n); isEmpty O(1)."},
+    {"Structure": "LinkedList", "Ordering": "Insertion order in a node chain",
+     "Operations": "insert, delete, search, display",
+     "Strengths": "Unlinks a found node without shifting all later values.",
+     "Weaknesses": "Linear traversal; one Node per value; no tail reference.",
+     "Use cases": "Dynamic task or playlist sequences and node-link demonstrations.",
+     "Big-O": "Insert/search/delete O(n) worst case; head match O(1); display O(n + L)."},
+]

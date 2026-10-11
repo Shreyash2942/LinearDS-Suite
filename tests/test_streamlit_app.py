@@ -42,7 +42,7 @@ def test_home_initializes_actual_structure_objects(app):
     assert any(title.value == "LinearDS-Suite" for title in app.title)
 
 
-@pytest.mark.parametrize("name", ["stack", "queue", "deque", "linked_list", "algorithms"])
+@pytest.mark.parametrize("name", ["stack", "queue", "deque", "linked_list", "algorithms", "performance", "comparison"])
 def test_each_page_loads(app, name):
     open_page(app, name)
 
@@ -243,3 +243,44 @@ def test_algorithm_hub_runs_each_example_without_modifying_interactive_objects(a
     assert app.success
     for key, values in before.items():
         assert app.session_state[key].to_list() == values
+
+
+def test_performance_page_uses_saved_results_and_filters_without_benchmarking(app, monkeypatch):
+    from performance import benchmark
+
+    def reject_runtime_benchmark(*args, **kwargs):
+        raise AssertionError("The UI must read saved results without running benchmarks.")
+
+    monkeypatch.setattr(benchmark, "run_benchmarks", reject_runtime_benchmark)
+    expected_records = benchmark.load_results()["results"]
+    open_page(app, "performance")
+    assert not app.error
+    assert len(app.dataframe[1].value) == len(expected_records)
+    assert app.get("vega_lite_chart")
+    app.selectbox("performance_structure").select("LinkedList").run()
+    assert not app.exception
+    assert set(app.dataframe[1].value["Structure"]) == {"LinkedList"}
+    assert len(app.dataframe[1].value) == sum(row["structure"] == "LinkedList" for row in expected_records)
+    app.selectbox("performance_metric").select("Full trial (ms)").run()
+    assert not app.exception
+    assert app.get("vega_lite_chart")
+
+
+@pytest.mark.parametrize("contents", [None, "{broken JSON", '{"schema_version": 1, "results": []}'])
+def test_performance_page_reports_unavailable_results(app, monkeypatch, tmp_path, contents):
+    from performance import benchmark
+
+    missing_or_invalid = tmp_path / "results.json"
+    if contents is not None:
+        missing_or_invalid.write_text(contents, encoding="utf-8")
+    monkeypatch.setattr(benchmark, "RESULTS_PATH", missing_or_invalid)
+    open_page(app, "performance")
+    assert "missing or invalid" in app.error[0].value
+    assert "performance.benchmark" in app.code[0].value
+
+
+def test_comparison_page_covers_all_structures(app):
+    open_page(app, "comparison")
+    assert set(app.dataframe[0].value["Structure"]) == {"Stack", "Queue", "Deque", "LinkedList"}
+    assert len(app.tabs) == 4
+    assert any("Weaknesses" in item.value for item in app.markdown)
