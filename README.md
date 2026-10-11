@@ -5,7 +5,7 @@ structures. The complete project will include Stack, Queue, Deque, and Linked
 List implementations, practical algorithms, automated tests, performance
 comparisons, written analysis, and a Streamlit interface.
 
-## Current progress: Day 4 complete
+## Current progress: Day 5 complete
 
 - Project foundation and Python package structure.
 - A list-backed `Stack` with the assignment-required methods.
@@ -14,17 +14,19 @@ comparisons, written analysis, and a Streamlit interface.
 - A list-backed `Deque` and palindrome checker.
 - A singly linked `LinkedList` built from `Node` objects and a task-management example.
 - Automated tests for all four structures and their algorithms.
-- A Streamlit interface with Home, Stack, Queue, Deque, Linked List, and Algorithms pages.
+- A Streamlit interface with Home, Stack, Queue, Deque, Linked List, Algorithms, Performance, and Comparison pages.
 - Session state, structure visualizations, input validation, and automated UI tests.
+- Repeatable `timeit` benchmarks and saved measurements for sizes 100, 1,000, and 10,000.
+- An implementation-specific Big-O comparison and approximately two-page written analysis.
 
-Benchmarks and written analysis are scheduled for later days. The data
-structures use the Python standard library; the interface uses Streamlit and
+Final submission validation remains for Day 6. The data structures and
+benchmarks use the Python standard library; the interface uses Streamlit and
 the test suite uses `pytest` plus Streamlit's built-in app-testing tools.
 
 ## Setup
 
 Use Python 3.10 or newer. From the project root, create a virtual environment
-and install the test dependency:
+and install the project dependencies:
 
 ```powershell
 python -m venv .venv
@@ -82,6 +84,44 @@ Linked List. Changing the returned list does not change the structure.
 The test command runs both data structure tests and UI tests. UI tests
 exercise widgets through Streamlit's `AppTest`, including navigation, object
 state, ordering, algorithm results, and errors.
+
+## Performance and written comparison
+
+Generate a new benchmark snapshot from the project root:
+
+```powershell
+.\.venv\Scripts\python.exe -m performance.benchmark
+```
+
+The benchmark saves `performance/results.json`. It runs 11 workloads at each
+of three sizes, using one warm-up and five fresh trials per workload. Structure
+preparation is excluded from the timing; destructive operations receive fresh
+inputs for every trial. The saved file includes all samples, operation counts,
+minimum trial times, averages per operation, environment information, and
+source hashes. No additional benchmark dependency is needed.
+
+For a shorter run without replacing the committed snapshot:
+
+```powershell
+.\.venv\Scripts\python.exe -m performance.benchmark --sizes 100 1000 --repeats 3 --output performance/local_results.json
+```
+
+The Performance page reads saved results and displays the Big-O table, runtime
+table, and a chart. Filter by structure or switch between average cost per
+operation and full-trial duration. Insertion/removal workloads use n operations;
+LinkedList search uses 100 last-node probes, while deletion removes the last
+node once. These distinctions matter when comparing timings. The page handles
+missing or invalid results with instructions for regenerating them.
+
+The Comparison page summarizes ordering, operations, strengths, weaknesses,
+use cases, and efficiency. It also displays the written analysis in an expander.
+
+- [Performance comparison](docs/performance_comparison.md): theoretical costs,
+  measurement method, recorded results, and interpretation.
+- [Written analysis](docs/analysis.md): an analytical comparison of all four structures.
+
+The static performance report describes the committed run. Regenerating JSON
+updates the UI's measurements but does not rewrite that report automatically.
 
 ## Stack example
 
@@ -235,7 +275,16 @@ LinearDS-Suite/
 |   |-- test_deque.py
 |   |-- test_linked_list.py
 |   |-- test_snapshots.py
+|   |-- test_performance.py
 |   `-- test_streamlit_app.py
+|-- performance/
+|   |-- __init__.py
+|   |-- benchmark.py
+|   |-- comparison.py
+|   `-- results.json
+|-- docs/
+|   |-- analysis.md
+|   `-- performance_comparison.md
 |-- streamlit_app/
 |   |-- __init__.py
 |   |-- app.py
@@ -246,18 +295,22 @@ LinearDS-Suite/
 |       |-- queue_page.py
 |       |-- deque_page.py
 |       |-- linked_list_page.py
-|       `-- algorithms_page.py
+|       |-- algorithms_page.py
+|       |-- performance_page.py
+|       `-- comparison_page.py
 `-- project doc/
     |-- LinearDS-Suite_README_Compact.md
     |-- DAY_01_PROJECT_SETUP_STACK.md
     |-- DAY_02_QUEUE_DEQUE.md
     |-- DAY_03_LINKED_LIST.md
     |-- DAY_04_STREAMLIT_UI.md
+    |-- DAY_05_PERFORMANCE_ANALYSIS.md
     `-- ... remaining daily plans
 ```
 
 The original [project brief](project%20doc/LinearDS-Suite_README_Compact.md),
 [Day 1 plan](project%20doc/DAY_01_PROJECT_SETUP_STACK.md),
 [Day 2 plan](project%20doc/DAY_02_QUEUE_DEQUE.md),
-[Day 3 plan](project%20doc/DAY_03_LINKED_LIST.md), and
-[Day 4 plan](project%20doc/DAY_04_STREAMLIT_UI.md) define the current scope.
+[Day 3 plan](project%20doc/DAY_03_LINKED_LIST.md),
+[Day 4 plan](project%20doc/DAY_04_STREAMLIT_UI.md), and
+[Day 5 plan](project%20doc/DAY_05_PERFORMANCE_ANALYSIS.md) define the current scope.
