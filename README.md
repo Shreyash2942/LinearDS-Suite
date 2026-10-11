@@ -1,11 +1,11 @@
 # LinearDS-Suite
 
 An object-oriented Python project for learning and comparing linear data
-structures. The complete project will include Stack, Queue, Deque, and Linked
+structures. The project includes Stack, Queue, Deque, and Linked
 List implementations, practical algorithms, automated tests, performance
 comparisons, written analysis, and a Streamlit interface.
 
-## Current progress: Day 5 complete
+## Current progress: Day 6 complete — submission-ready
 
 - Project foundation and Python package structure.
 - A list-backed `Stack` with the assignment-required methods.
@@ -19,9 +19,16 @@ comparisons, written analysis, and a Streamlit interface.
 - Repeatable `timeit` benchmarks and saved measurements for sizes 100, 1,000, and 10,000.
 - An implementation-specific Big-O comparison and approximately two-page written analysis.
 
-Final submission validation remains for Day 6. The data structures and
+Final validation passed in a clean checkout and a newly created virtual
+environment: **193 tests passed**, the full benchmark completed, and all eight
+Streamlit pages loaded in Chrome. Validated on Windows with Python 3.14.4,
+Streamlit 1.65.0, and pytest 9.1.1. The data structures and
 benchmarks use the Python standard library; the interface uses Streamlit and
 the test suite uses `pytest` plus Streamlit's built-in app-testing tools.
+
+See the [completed submission checklist](docs/submission_checklist.md) for the
+requirement mapping, verification results, and final run commands. The
+`v1.0-submission` Git tag identifies the final submission snapshot.
 
 ## Setup
 
@@ -71,6 +78,7 @@ Your objects remain available across interactions and page switches within
 the same session. Refreshing the browser or starting a new session creates
 fresh structures. Each user session has its own objects. Algorithm examples
 use separate objects and do not change your interactive structures.
+Opening a page directly also initializes the app and preserves the destination.
 
 The Algorithms page collects all four examples. Task examples accept one
 label per line, trim surrounding spaces, and ignore blank lines. The
@@ -122,6 +130,22 @@ use cases, and efficiency. It also displays the written analysis in an expander.
 
 The static performance report describes the committed run. Regenerating JSON
 updates the UI's measurements but does not rewrite that report automatically.
+
+## Final validation commands
+
+After installing dependencies, run these from the project root to verify the
+project without replacing the committed benchmark snapshot:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip check
+.\.venv\Scripts\python.exe -m pytest -q
+.\.venv\Scripts\python.exe -m performance.benchmark --output performance/local_results.json
+.\.venv\Scripts\python.exe -m streamlit run streamlit_app/app.py
+```
+
+The local benchmark output, virtual environments, and test caches are ignored
+by Git. The committed source, tests, saved results, and reports are the
+submission files; no account or email address is needed to run the app locally.
 
 ## Stack example
 
@@ -209,7 +233,7 @@ algorithm uses the custom Deque to compare characters from opposite ends.
 ## Linked List example
 
 ```python
-from datastructure_src.linked_list import LinkedList, Node, manage_tasks
+from datastructure_src.linked_list import LinkedList, manage_tasks
 
 linked_list = LinkedList()
 linked_list.insert(10)
@@ -284,7 +308,8 @@ LinearDS-Suite/
 |   `-- results.json
 |-- docs/
 |   |-- analysis.md
-|   `-- performance_comparison.md
+|   |-- performance_comparison.md
+|   `-- submission_checklist.md
 |-- streamlit_app/
 |   |-- __init__.py
 |   |-- app.py
@@ -305,12 +330,13 @@ LinearDS-Suite/
     |-- DAY_03_LINKED_LIST.md
     |-- DAY_04_STREAMLIT_UI.md
     |-- DAY_05_PERFORMANCE_ANALYSIS.md
-    `-- ... remaining daily plans
+    `-- DAY_06_FINAL_VALIDATION.md
 ```
 
 The original [project brief](project%20doc/LinearDS-Suite_README_Compact.md),
 [Day 1 plan](project%20doc/DAY_01_PROJECT_SETUP_STACK.md),
 [Day 2 plan](project%20doc/DAY_02_QUEUE_DEQUE.md),
 [Day 3 plan](project%20doc/DAY_03_LINKED_LIST.md),
-[Day 4 plan](project%20doc/DAY_04_STREAMLIT_UI.md), and
-[Day 5 plan](project%20doc/DAY_05_PERFORMANCE_ANALYSIS.md) define the current scope.
+[Day 4 plan](project%20doc/DAY_04_STREAMLIT_UI.md),
+[Day 5 plan](project%20doc/DAY_05_PERFORMANCE_ANALYSIS.md), and
+[Day 6 plan](project%20doc/DAY_06_FINAL_VALIDATION.md) define the project scope.
