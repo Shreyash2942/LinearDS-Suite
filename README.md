@@ -331,7 +331,7 @@ LinearDS-Suite/
 |   |-- LinearDS_Suite_APA_Report.pdf
 |   `-- report_assets/
 |       `-- benchmark_growth.png
-|-- streamlit_app/
+`-- streamlit_app/
 |   |-- __init__.py
 |   |-- app.py
 |   |-- common.py
@@ -344,20 +344,7 @@ LinearDS-Suite/
 |       |-- algorithms_page.py
 |       |-- performance_page.py
 |       `-- comparison_page.py
-`-- project doc/
-    |-- LinearDS-Suite_README_Compact.md
-    |-- DAY_01_PROJECT_SETUP_STACK.md
-    |-- DAY_02_QUEUE_DEQUE.md
-    |-- DAY_03_LINKED_LIST.md
-    |-- DAY_04_STREAMLIT_UI.md
-    |-- DAY_05_PERFORMANCE_ANALYSIS.md
-    `-- DAY_06_FINAL_VALIDATION.md
 ```
 
-The original [project brief](project%20doc/LinearDS-Suite_README_Compact.md),
-[Day 1 plan](project%20doc/DAY_01_PROJECT_SETUP_STACK.md),
-[Day 2 plan](project%20doc/DAY_02_QUEUE_DEQUE.md),
-[Day 3 plan](project%20doc/DAY_03_LINKED_LIST.md),
-[Day 4 plan](project%20doc/DAY_04_STREAMLIT_UI.md),
-[Day 5 plan](project%20doc/DAY_05_PERFORMANCE_ANALYSIS.md), and
-[Day 6 plan](project%20doc/DAY_06_FINAL_VALIDATION.md) define the project scope.
+The original project brief and daily plans are retained locally in `project doc/`
+and excluded from the GitHub repository.
