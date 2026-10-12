@@ -1,0 +1,4 @@
+# Preserve report documents and figures as binary artifacts.
+*.pdf binary
+*.docx binary
+*.png binary

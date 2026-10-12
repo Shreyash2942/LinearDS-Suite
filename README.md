@@ -147,6 +147,22 @@ The local benchmark output, virtual environments, and test caches are ignored
 by Git. The committed source, tests, saved results, and reports are the
 submission files; no account or email address is needed to run the app locally.
 
+## APA-style project report
+
+The full report is authored as **Shreyashkumar Patel** and documents the
+`v1.0-submission` implementation, its 193 passing tests, and all 33 archived
+benchmark measurements. It includes APA 7 student-paper formatting, in-text
+citations, references, three tables, a performance figure, and a reproducibility
+appendix. The instructor line is left blank for completion.
+
+- [PDF report](docs/LinearDS_Suite_APA_Report.pdf): the complete 15-page report.
+- [Editable Word report](docs/LinearDS_Suite_APA_Report.docx).
+- [Markdown source](docs/apa_report.md).
+
+The original two-page comparison remains in `docs/analysis.md`. The additional
+report files document the existing submission snapshot; the submission tag
+continues to identify the validated implementation.
+
 ## Stack example
 
 Run this Python code from the project root:
@@ -309,7 +325,12 @@ LinearDS-Suite/
 |-- docs/
 |   |-- analysis.md
 |   |-- performance_comparison.md
-|   `-- submission_checklist.md
+|   |-- submission_checklist.md
+|   |-- apa_report.md
+|   |-- LinearDS_Suite_APA_Report.docx
+|   |-- LinearDS_Suite_APA_Report.pdf
+|   `-- report_assets/
+|       `-- benchmark_growth.png
 |-- streamlit_app/
 |   |-- __init__.py
 |   |-- app.py
