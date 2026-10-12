@@ -5,6 +5,9 @@ structures. The project includes Stack, Queue, Deque, and Linked
 List implementations, practical algorithms, automated tests, performance
 comparisons, written analysis, and a Streamlit interface.
 
+Start with the [complete user guide](guide.md) for installation, every application
+page, algorithm examples, benchmarks, tests, and troubleshooting.
+
 ## Current progress: Day 6 complete — submission-ready
 
 - Project foundation and Python package structure.
@@ -286,6 +289,7 @@ the removal and search results. It leaves the input collection unchanged.
 ```text
 LinearDS-Suite/
 |-- README.md
+|-- guide.md
 |-- requirements.txt
 |-- .gitignore
 |-- .streamlit/
